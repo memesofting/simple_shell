@@ -5,13 +5,14 @@
  * Return: Always 0
  */
 
-/*int main(int ac __attribute__((unused)), char **av)*/
-int main(int ac, char **av)
+int main(int ac __attribute__((unused)), char **av)
+/*int main(int ac, char **av)*/
 {
 	int i;
 
 	i = 0;
-	while (i < ac)
+	/*while (i < ac)*/
+	while (av[i] != NULL)
 	{
 		printf("%s\n", av[i]);
 		i++;
