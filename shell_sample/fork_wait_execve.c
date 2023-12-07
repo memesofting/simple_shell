@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- * main - fork, wiat, and execve exercise
+ * main - fork, wait, and execve exercise
  *
  * Return: Always 0
  */
 
 int main(void)
 {
+	char 
 }
