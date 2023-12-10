@@ -11,17 +11,18 @@ void p_tok(char *str, char *delim)
 	tok = strtok(str, delim);
 	while (tok != NULL)
 	{
-		printf("%s\n", tok);
+		printo("%s\n", tok);
 		tok = strtok(NULL, delim);
 	}
-	printf("That's it :)\n");
+	printo("That's it :)\n");
 }
 
-int main(void)
-{
-	/*char str[];*/
-	char str[] = "Life is good";
-
-	p_tok(str, " ");
-	return (0);
-}
+/**
+ * int main(void)
+ * {
+ * char str[];
+ * char str[] = "Life is good";
+ * p_tok(str, " ");
+ * return (0);
+ * }
+ */

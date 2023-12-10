@@ -12,27 +12,27 @@ int main(void)
 	pid_t child;
 
 	char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};
-	child = fork();
-	if (child == -1)
-	{
-		perror("Error");
-		return (-1);
-	}
-	if (child == 0)
+	i = 0;
+	while (i <= 4)
 	{
 		/*char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};*/
+		fork();
+		if (fork() == -1)
+		{
+			perror("Error\n");
+			return (-1);
+		}
+		printf("I am: %d and mu father is:%d\n ", getpid(), getppid());
 		exec = execve(argv[0], argv, NULL);
 		if (exec == -1)
 		{
 			perror("Error");
 			return (-1);
 		}
+		i++;
 	}
-	else
-	{
-		wait(NULL);
-		printf("all set\n");
-	}
+	wait(NULL);
+	printf("all set\n");
 	/*printf("all set\n");*/
 	return (0);
 }
