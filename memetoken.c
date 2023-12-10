@@ -15,21 +15,27 @@ void memetoken(char *str, char *delim)
 	/*rd = read(STDOUT_FILENO, tok, 1);*/
 	strcpy(strcopy, str);
 	tok = strtok(strcopy, delim);
+	printo(tok);
 	while (tok != NULL)
 	{
-		printo(tok);
 		tok = strtok(NULL, delim);
+		printo(tok);
 	}
-	printo(strcopy);
+/*	_putchar('\n');
+ *	printo(strcopy);
+ */
 	printo("That's it :)\n");
+	free(strcopy);
 }
 
 int main(void)
 {
 	/*char *string;*/
+	char *d;
 
+	d = " ";
 	char *string = "good boy\n";
 	printo(string);
-	memetoken(string, " ");
+	memetoken(string, d);
 	return (0);
 }
