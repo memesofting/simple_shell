@@ -9,8 +9,9 @@ int main(int ac, char **av)
 {
 	size_t n;
 	ssize_t numread;
-	char *buf, *bufcopy;
+	char *buf, *bufcopy, *delim;
 
+	delim = " ";
 	buf = NULL;
 	while (1)
 	{
@@ -29,7 +30,8 @@ int main(int ac, char **av)
 	printf("%ld\n", numread);
 	bufcopy = malloc(sizeof(char) * (numread + 1));
 	strcpy(buf, bufcopy);
-	memetoken(bufcopy, " ");
+	memetoken(bufcopy, delim);
 	free(buf);
+	free(bufcopy);
 	return(0);
 }
