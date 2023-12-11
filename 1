@@ -4,27 +4,31 @@
  *
  * Return: 0
  */
-void memetoken(char *str, char *delim)
+char **memetoken(char *str, char *delim)
 {
+	int len;
 	char *tok, *strcopy;
 	int numtok, i;
-	//char **av;
+	char **av;
 
 	numtok = 0;
-	i = 0;
-	strcopy = malloc(sizeof(char) * (strlen(str) + 1));
+	len = strlen(str);
+	strcopy = malloc(sizeof(char) * len);
 	/*copy str int strcopy and tokenize strcopy*/
 	strcpy(strcopy, str);
 	tok = strtok(strcopy, delim);
+	printo(tok);
+	_putchar('\n');
 	while (tok != NULL)
 	{
-		printo(tok);
-		//_putchar('\n');
 		tok = strtok(NULL, delim);
+		printo(tok);
+		_putchar('\n');
 		numtok++;
 	}
-	//av = malloc(sizeof(char *) * (numtok + 1));
+	av = malloc(sizeof(char *) * (numtok + 1));
 	//tok = strtok(strcopy, delim);
+	//i = 0;
 	//while (tok != NULL)
 	//{
 	//	av[i] = malloc(sizeof(char) * (strlen(tok) + 1));
@@ -33,9 +37,8 @@ void memetoken(char *str, char *delim)
 	//	i++;
 	//}
 
-	//av = NULL
-	printf("number of tokens: %d\n", numtok);
-	strcopy = NULL;
+	//av[i] = NULL;
 	free(strcopy);
-	//printo("That's it :)\n");
+	printo("That's it :)\n");
+	return (av);
 }

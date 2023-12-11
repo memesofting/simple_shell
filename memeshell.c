@@ -9,7 +9,7 @@ int main(int ac, char **av)
 {
 	size_t n;
 	ssize_t numread;
-	char *buf, *bufcopy, *delim;
+	char *buf/*, *bufcopy*/, *delim;
 
 	delim = " ";
 	buf = NULL;
@@ -21,17 +21,18 @@ int main(int ac, char **av)
 		{
 			printo("closing memeshell\n");
 			free(buf);
-			return (-1);
+			//return (-1);
 		}
-		printo(buf);
-		printf("%ld\n", numread);
+		//printo(buf);
+		//printf("%ld\n", numread);
 		/*printo("command is: %s\n", buf);*/
+		//printf("%ld\n", numread);
+		//bufcopy = malloc(sizeof(char) * (numread + 1));
+		//strcpy(buf, bufcopy);
+		memetoken(buf, delim);
+		free(buf);
+		//free(bufcopy);
 	}
-	printf("%ld\n", numread);
-	bufcopy = malloc(sizeof(char) * (numread + 1));
-	strcpy(buf, bufcopy);
-	memetoken(bufcopy, delim);
-	free(buf);
-	free(bufcopy);
+	printo("I called memetoken");
 	return(0);
 }

@@ -14,8 +14,9 @@ int append_text_to_file(const char *filename, char *text_content);
 int printo(char *letters);
 void _putchar(char c);
 int memeprompt(void);
-char **memetoken(char *str, char *delim);
+void memetoken(char *str, char *delim);
 /*int main(int ac, char **av);*/
 int main(void);
+void p_tok(char *str, char *delim);
 
 #endif
