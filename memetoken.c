@@ -1,41 +1,47 @@
 #include "main.h"
 /**
  * memetoken - splits string with strtok function
+ * @str: string to split
+ * @delim: delimeter char
  *
- * Return: 0
+ * Return: pointer to char
  */
-void memetoken(char *str, char *delim)
+char **memetoken(char *str, char *delim)
 {
 	char *tok, *strcopy;
-	int numtok, i;
-	//char **av;
+	char *strcopy2;
+	int numtok, i, j;
+	char **av;
 
 	numtok = 0;
 	i = 0;
 	strcopy = malloc(sizeof(char) * (strlen(str) + 1));
+	strcopy2 = malloc(sizeof(char) * (strlen(str) + 1));
 	/*copy str int strcopy and tokenize strcopy*/
 	strcpy(strcopy, str);
 	tok = strtok(strcopy, delim);
 	while (tok != NULL)
 	{
-		printo(tok);
+		//printo(tok);
 		//_putchar('\n');
-		tok = strtok(NULL, delim);
 		numtok++;
+		tok = strtok(NULL, delim);
 	}
-	//av = malloc(sizeof(char *) * (numtok + 1));
-	//tok = strtok(strcopy, delim);
-	//while (tok != NULL)
-	//{
-	//	av[i] = malloc(sizeof(char) * (strlen(tok) + 1));
-	//	strcpy(av[i], tok);
-	//	tok = strtok(NULL, delim);
-	//	i++;
-	//}
+	//printf("number of tokens: %d\n", numtok);
+	av = malloc(sizeof(char *) * (numtok + 1));
+	tok = strtok(strcopy2, delim);
+	while (tok != NULL)
+	{
+		av[i] = malloc(sizeof(char) * (strlen(tok) + 1));
+		strcpy(av[i], tok);
+		tok = strtok(NULL, delim);
+		i++;
+	}
 
-	//av = NULL
+	av[i] = NULL;
 	printf("number of tokens: %d\n", numtok);
-	strcopy = NULL;
 	free(strcopy);
-	//printo("That's it :)\n");
+	free(strcopy2);
+	printo("That's it :)\n");
+	return (av);
 }

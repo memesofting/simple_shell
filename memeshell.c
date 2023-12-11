@@ -5,13 +5,13 @@
  *
  * Return:
  */
-int main(int ac, char **av)
+int main(void)
 {
+	char **av;
 	size_t n;
 	ssize_t numread;
-	char *buf/*, *bufcopy*/, *delim;
+	char *buf/*, *bufcopy, *delim*/;
 
-	delim = " ";
 	buf = NULL;
 	while (1)
 	{
@@ -21,18 +21,19 @@ int main(int ac, char **av)
 		{
 			printo("closing memeshell\n");
 			free(buf);
-			//return (-1);
+			exit (0);
 		}
-		//printo(buf);
-		//printf("%ld\n", numread);
-		/*printo("command is: %s\n", buf);*/
-		//printf("%ld\n", numread);
+		printo(buf);
+		printf("%ld\n", numread);
 		//bufcopy = malloc(sizeof(char) * (numread + 1));
-		//strcpy(buf, bufcopy);
-		memetoken(buf, delim);
-		free(buf);
-		//free(bufcopy);
+		//strcpy(buf, bufcopy)
+		av = memetoken(buf, " ");
+		if (execve(av[0], av, NULL) == -1)
+		{
+			perror("Error:");
+		}
 	}
+	free(buf);
 	printo("I called memetoken");
 	return(0);
 }
