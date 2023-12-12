@@ -7,12 +7,13 @@
  */
 int main(void)
 {
-	char **av;
+	//char **av;
 	size_t n;
 	ssize_t numread;
 	char *buf/*, *bufcopy, *delim*/;
 
 	buf = NULL;
+	numread = 0;
 	while (1)
 	{
 		printo("memeshell$ ");
@@ -32,6 +33,7 @@ int main(void)
 		{
 			perror("Error:");
 		}
+		//memeexecve(av);
 	}
 	free(buf);
 	printo("I called memetoken");

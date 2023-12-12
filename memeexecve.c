@@ -6,22 +6,26 @@
  * Return: 0
  */
 
-int memeexecve(char *command[])
+int memeexecve(char **command)
 {
-	pid_t child;
-	int len;
-
-	len = strlen(command);
-	write(1, &command, len)
-	child = fork();
-	if (child == 0)
+	//pid_t child;
+	//child = fork();
+	//if (!child)
+	//{
+	//	perror("Error\n");
+	//	return (-1);
+	//}
+	//if (child == 0)
+	//else
+	//{
+	//	if (execve(command[0], command, NULL) == -1)
+	//	{
+	//		perror("Error\n");
+	//	}
+	//}
+	if (execve(command[0], command, NULL) == -1)
 	{
-		exec = execve(command[0], command, NULL);
-		if (exec == - 1)
-		{
-			perror("Error\n");
-		}
+		perror("Error\n");
 	}
-	else 
-		wait(NULL);
+	return (0);
 }

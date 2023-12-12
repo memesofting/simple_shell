@@ -10,8 +10,8 @@ char **memetoken(char *str, char *delim)
 {
 	char *tok, *strcopy;
 	char *strcopy2;
-	int numtok, i, j;
-	char **av;
+	int numtok, i;
+	char **avptr;
 
 	numtok = 0;
 	i = 0;
@@ -27,21 +27,22 @@ char **memetoken(char *str, char *delim)
 		numtok++;
 		tok = strtok(NULL, delim);
 	}
-	//printf("number of tokens: %d\n", numtok);
-	av = malloc(sizeof(char *) * (numtok + 1));
+	avptr = malloc(sizeof(char *) * (numtok + 1));
 	tok = strtok(strcopy2, delim);
 	while (tok != NULL)
 	{
-		av[i] = malloc(sizeof(char) * (strlen(tok) + 1));
-		strcpy(av[i], tok);
+		avptr[i] = malloc(sizeof(char) * (strlen(tok) + 1));
+		strcpy(avptr[i], tok);
 		tok = strtok(NULL, delim);
 		i++;
 	}
 
-	av[i] = NULL;
+	avptr[i] = NULL;
+	//printf("%s\n", avptr[0]);
+
 	printf("number of tokens: %d\n", numtok);
 	free(strcopy);
 	free(strcopy2);
 	printo("That's it :)\n");
-	return (av);
+	return (avptr);
 }
