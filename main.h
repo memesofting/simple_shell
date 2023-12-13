@@ -20,5 +20,6 @@ int main(void);
 void p_tok(char *str, char *delim);
 void memeexecve(char **command);
 char *memegetline(void);
+int memeaccess(char *path);
 
 #endif

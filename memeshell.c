@@ -23,9 +23,11 @@ int main(void)
 			free(newbuf);
 			exit(-1);
 		}
-		bufcopy = strdup(newbuf);
-		printo(bufcopy);
-		av = memetoken(bufcopy, " \t\n");
+		av = memetoken(newbuf, " \t\n");
+		if (memeaccess(av[0]) == -1)
+		{
+			continue;
+		}
 		child = fork();
 		if (child == 0)
 		{
@@ -54,12 +56,13 @@ char *memegetline(void)
 	numread = getline(&buf, &n, stdin);
 	if (numread == -1)
 	{
-		perror("failed to getline\n");
+		//perror("failed to getline\n");
 		return (NULL);
-		/*exit (0);*/
 	}
-	printf("number of char read: %ld\n", numread);
-	printf("Input is: %s\n", buf);
-	printf("get lines done\n");
+	/**
+	 * printf("number of char read: %ld\n", numread);
+	 * printf("Input is: %s\n", buf);
+	 * printf("get lines done\n");
+	 */
 	return (buf);
 }
