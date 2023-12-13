@@ -1,18 +1,17 @@
 #include "main.h"
 /**
  * main - creates shell
+ * @ac: argument count
+ * @av: argument
+ * @env: environment variable
  * Return: Always 0 on success
  */
-int main(void)
+int main(int ac, char **av, char **env)
 {
-	char **av;
-	size_t n;
-	ssize_t numread;
-	char *newbuf, *bufcopy;
+	char *newbuf;
 	pid_t child;
 	int status;
 
-	numread = 0;
 	while (1)
 	{
 		printo("memeshell$ ");
@@ -56,7 +55,7 @@ char *memegetline(void)
 	numread = getline(&buf, &n, stdin);
 	if (numread == -1)
 	{
-		//perror("failed to getline\n");
+		/*perror("failed to getline\n");*/
 		return (NULL);
 	}
 	/**

@@ -15,7 +15,7 @@ void memeexecve(char **command)
 	}
 	else
 	{
-		if (execve(command[0], command, NULL) == -1)
+		if (execve(command[0], command, environ) == -1)
 		{
 			perror("Error\n");
 		}
