@@ -16,7 +16,7 @@ void _putchar(char c);
 int memeprompt(void);
 char **memetoken(char *str, char *delim);
 /*int main(int ac, char **av);*/
-int main();
+int main(void);
 void p_tok(char *str, char *delim);
 void memeexecve(char **command);
 char *memegetline(void);
