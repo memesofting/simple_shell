@@ -14,9 +14,13 @@ char **memetoken(char *str, char *delim)
 	char **avptr;
 
 	numtok = 0;
-	i = 0;
+	//i = 0;
 	strcopy = malloc(sizeof(char) * (strlen(str) + 1));
+	if (strcopy == NULL)
+		return (NULL);
 	strcopy2 = malloc(sizeof(char) * (strlen(str) + 1));
+	if (strcopy2 == NULL)
+		return (NULL);
 	/*copy str int strcopy and tokenize strcopy*/
 	strcpy(strcopy, str);
 	tok = strtok(strcopy, delim);
@@ -29,6 +33,7 @@ char **memetoken(char *str, char *delim)
 	}
 	avptr = malloc(sizeof(char *) * (numtok + 1));
 	tok = strtok(strcopy2, delim);
+	i = 0;
 	while (tok != NULL)
 	{
 		avptr[i] = malloc(sizeof(char) * (strlen(tok) + 1));

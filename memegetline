@@ -1,0 +1,25 @@
+#include "main.h"
+
+/**
+ * memegtline - gets command from stdin
+ *
+ * Return: number of char read
+ */
+char *memegetline(void)
+{
+	size_t n;
+	ssize_t numread;
+	char *buf;
+
+	buf = NULL;
+	numread = getline(&buf, &n, stdin);
+	if (numread == -1)
+	{
+		printo("closing memeshell\n");
+		free(buf);
+		exit (0);
+	}
+	printf("%ld\n", numread);
+	printf("Input is: %s\n", buf);
+	return(buf);
+}

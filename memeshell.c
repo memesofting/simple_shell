@@ -1,41 +1,65 @@
 #include "main.h"
-
 /**
  * main - creates shell
- *
- * Return:
+ * Return: Always 0 on success
  */
 int main(void)
 {
-	//char **av;
+	char **av;
 	size_t n;
-	ssize_t numread;
-	char *buf/*, *bufcopy, *delim*/;
+	sisize_t numread;
+	char *newbuf, *bufcopy;
+	pid_t child;
+	int status;
 
-	buf = NULL;
 	numread = 0;
 	while (1)
 	{
 		printo("memeshell$ ");
-		numread = getline(&buf, &n, stdin);
-		if (numread == -1)
+		newbuf = memegetline();
+		if (newbuf == NULL)
 		{
 			printo("closing memeshell\n");
-			free(buf);
-			exit (0);
+			free(newbuf);
+			exit(-1);
 		}
-		printo(buf);
-		printf("%ld\n", numread);
-		//bufcopy = malloc(sizeof(char) * (numread + 1));
-		//strcpy(buf, bufcopy)
-		av = memetoken(buf, " ");
-		if (execve(av[0], av, NULL) == -1)
+		bufcopy = strdup(newbuf);
+		printo(bufcopy);
+		av = memetoken(bufcopy, " \t\n");
+		child = fork();
+		if (child == 0)
 		{
-			perror("Error:");
+			memeexecve(av);
 		}
-		//memeexecve(av);
+		else
+			wait(&status);
+		free(newbuf);
 	}
-	free(buf);
-	printo("I called memetoken");
-	return(0);
+	return (0);
+}
+
+#include "main.h"
+/**
+ * memegetline - gets command from stdin
+ *
+ * Return: number of char read
+ */
+char *memegetline(void)
+{
+	size_t n;
+	ssize_t numread;
+	char *buf;
+
+	buf = NULL;
+	numread = getline(&buf, &n, stdin);
+	if (numread == -1)
+	{
+		perror("failed to getline\n");
+		return (NULL);
+		/*exit (0);*/
+	}
+	printf("number of char read: %ld\n", numread);
+	printf("Input is: %s\n", buf);
+	printf("get lines done\n");
+	return (buf);
 }

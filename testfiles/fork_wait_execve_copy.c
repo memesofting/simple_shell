@@ -38,7 +38,7 @@ int main(void)
 	else
 	{
 		wait(NULL);
-		printo("all set\n");
+		printf("all set\n");
 	}
 	/*printf("all set\n");*/
 	return (0);

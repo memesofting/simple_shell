@@ -2,30 +2,22 @@
 
 /**
  * memeexecve - executes command
+ * @command: command to execute
  *
  * Return: 0
  */
 
-int memeexecve(char **command)
+void memeexecve(char **command)
 {
-	//pid_t child;
-	//child = fork();
-	//if (!child)
-	//{
-	//	perror("Error\n");
-	//	return (-1);
-	//}
-	//if (child == 0)
-	//else
-	//{
-	//	if (execve(command[0], command, NULL) == -1)
-	//	{
-	//		perror("Error\n");
-	//	}
-	//}
-	if (execve(command[0], command, NULL) == -1)
+	if (command == NULL)
 	{
-		perror("Error\n");
+		perror("Error: no command to execute");
 	}
-	return (0);
+	else
+	{
+		if (execve(command[0], command, NULL) == -1)
+		{
+			perror("Error\n");
+		}
+	}
 }
