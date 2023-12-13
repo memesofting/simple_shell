@@ -7,7 +7,7 @@ int main(void)
 {
 	char **av;
 	size_t n;
-	sisize_t numread;
+	ssize_t numread;
 	char *newbuf, *bufcopy;
 	pid_t child;
 	int status;
