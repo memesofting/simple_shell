@@ -8,7 +8,7 @@
  */
 int main(int ac, char **av, char **env)
 {
-	char *newbuf;
+	char *newbuf, *bufcopy;
 	pid_t child;
 	int status;
 
@@ -22,7 +22,9 @@ int main(int ac, char **av, char **env)
 			free(newbuf);
 			exit(-1);
 		}
-		av = memetoken(newbuf, " \t\n");
+		bufcopy = strdup(newbuf);
+		av = memetoken(bufcopy, " \t\n");
+
 		if (memeaccess(av[0]) == -1)
 		{
 			continue;
@@ -58,10 +60,5 @@ char *memegetline(void)
 		/*perror("failed to getline\n");*/
 		return (NULL);
 	}
-	/**
-	 * printf("number of char read: %ld\n", numread);
-	 * printf("Input is: %s\n", buf);
-	 * printf("get lines done\n");
-	 */
 	return (buf);
 }

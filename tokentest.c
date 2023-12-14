@@ -32,9 +32,7 @@ char **memetoken(char *str, char *delim)
 		i++;
 	}
 	avptr[i] = NULL;
-	/*printf("number of tokens: %d\n", numtok);*/
 	free(strcopy);
 	free(strcopy2);
-	/*printo("That's it :)\n");*/
 	return (avptr);
 }

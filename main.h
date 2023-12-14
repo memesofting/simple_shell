@@ -20,7 +20,7 @@ char **memetoken(char *str, char *delim);
 int main(int ac, char **av, char **env);
 /*int main(void);*/
 void p_tok(char *str, char *delim);
-void memeexecve(char **command);
+int memeexecve(char **command);
 char *memegetline(void);
 int memeaccess(char *path);
 
