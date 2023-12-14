@@ -1,0 +1,45 @@
+#include "main.h"
+
+char *memereadline(void)
+{
+	int i, n;
+	char *str;
+	char ch;
+
+	i = 0;
+	str = malloc(sizeof(char) * n);
+	if (str == NULL)
+	{
+		perror("memory allocation failed\n");
+		exit(EXIT_FAILURE);
+	}
+	while (1)
+	{
+		read(stdin, &str, 1);
+		if (ch == EOF)
+		{
+			free(str);
+			exit(EXIT_SUCCESS);
+		}
+		else if (ch == '\n')
+		{
+			str[i] = NULL;
+			return (str);
+		}
+		else
+		{
+			str[i] = ch;
+		}
+		i++;
+		if (i >= n)
+		{
+			n += n;
+			str =realloc(str, n);
+			if (str == NULL)
+			{
+				perror("reallocation failed\n");
+				exit(EXIT_FAILURE);
+			}
+		}
+	}
+}
