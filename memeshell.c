@@ -6,7 +6,7 @@
  * @env: environment variable
  * Return: Always 0 on success
  */
-int main(int ac, char **av, char **env)
+int main(void)
 {
 	if (isatty(STDIN_FILENO) == 1)
 	{
@@ -100,7 +100,6 @@ void nonintershell(void)
 {
 	char *newbuf, *bufcopy;
 	pid_t child;
-	size_t n;
 	char **av;
 	int status;
 
@@ -111,7 +110,7 @@ void nonintershell(void)
 		bufcopy = strdup(newbuf);
 		av = memetoken(bufcopy, " \t\n");
 		/*memeaccess(av[1]);*/
-		/*child = fork();*/
+		child = fork();
 		if (child == 0)
 		{
 			memeexecve(av);

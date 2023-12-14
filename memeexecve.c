@@ -22,4 +22,5 @@ int memeexecve(char **command)
 			return (-1);
 		}
 	}
+	return (0);
 }
