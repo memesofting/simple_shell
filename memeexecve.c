@@ -34,7 +34,7 @@ int memeexecve(char **command)
 #include "main.h"
 /**
  * memefork - creates a child process
- * @pro: commant to execute under process
+ *
  * Return: 0
  */
 int memefork(void)
