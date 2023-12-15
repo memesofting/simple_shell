@@ -26,5 +26,6 @@ int memeaccess(char *path);
 void intershell(void);
 void nonintershell(void);
 char *memereadline(void);
+int memefork(void);
 
 #endif

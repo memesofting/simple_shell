@@ -1,9 +1,7 @@
 #include "main.h"
 /**
  * main - creates shell
- * @ac: argument count
- * @av: argument
- * @env: environment variable
+ *
  * Return: Always 0 on success
  */
 int main(void)
@@ -41,11 +39,6 @@ void intershell(void)
 		}
 		bufcopy = strdup(newbuf);
 		av = memetoken(bufcopy, " \t\n");
-
-		if (memeaccess(av[0]) == -1)
-		{
-			continue;
-		}
 		child = fork();
 		if (child == 0)
 		{
@@ -54,6 +47,8 @@ void intershell(void)
 		else
 			wait(&status);
 		free(newbuf);
+		free(bufcopy);
+		free(av[0]);
 		free(av);
 	}
 }
@@ -109,7 +104,6 @@ void nonintershell(void)
 		newbuf = memereadline();
 		bufcopy = strdup(newbuf);
 		av = memetoken(bufcopy, " \t\n");
-		/*memeaccess(av[1]);*/
 		child = fork();
 		if (child == 0)
 		{
@@ -119,6 +113,7 @@ void nonintershell(void)
 			wait(&status);
 		free(newbuf);
 		free(bufcopy);
+		free(av[0]);
 		free(av);
 	}
 }
