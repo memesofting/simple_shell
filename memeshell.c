@@ -98,9 +98,9 @@ void nonintershell(void)
 	char **av;
 	int status;
 
-	while (1)
+	/*while (1)*/
 	{
-		newbuf = malloc(sizeof(char) * 1024);
+		/*newbuf = malloc(sizeof(char) * 1024);*/
 		newbuf = memereadline();
 		bufcopy = strdup(newbuf);
 		av = memetoken(bufcopy, " \t\n");
