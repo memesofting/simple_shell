@@ -41,7 +41,6 @@ int memefork(void)
 {
 	pid_t child;
 	int status;
-
 	child = fork();
 	if (child == -1)
 	{

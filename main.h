@@ -27,5 +27,6 @@ void intershell(void);
 void nonintershell(void);
 char *memereadline(void);
 int memefork(void);
+char *resolve_command_path(char *command);
 
 #endif
